@@ -1,0 +1,54 @@
+export const ordersList = [
+  {
+    'order_id':'3DSFDFGSI3458X',
+      'openid':'SDFODSNAPEJSF',
+    'order_status':0,
+    'add_time':'2017/5/7',
+    'linkman':'陈先生',
+    'tel':'13398934802',
+    'pay_status':1,
+    'pay_code':1,
+    'pay_name':'微信',
+    'coupon_price':100,
+    'discount':20,
+    'amount':500,
+    'book_time':'2017/7/8',
+    'products':[
+      {
+        'product_id':1,
+        'product_name':'个人妆',
+        'total_price':200,
+      },
+
+    ]
+  },
+  {
+    'order_id':'3DSFDFGSI3458X',
+      'openid':'SDFODSNAPEJSF',
+    'order_status':1,
+    'add_time':'2017/5/7',
+    'linkman':'陈先生',
+    'tel':'13398934802',
+    'pay_status':1,
+    'pay_code':1,
+    'pay_name':'微信',
+    'coupon_price':100,
+    'discount':20,
+    'amount':500,
+    'book_time':'2017/7/8',
+    'products':[
+      {
+        'product_id':1,
+        'product_name':'个人妆',
+        'total_price':200,
+      },
+      {
+        'product_id':2,
+        'product_name':'结婚摄影',
+        'total_price':2000,
+      },
+
+    ]
+  },
+
+]
