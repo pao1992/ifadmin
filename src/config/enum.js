@@ -46,7 +46,7 @@ let experienceCoupon = {
     'color':'#fff',
 }
 //折扣券
-let discountCoupon = {
+let rebateCoupon = {
     'type':4,
     'start':'',
     'end':'',
@@ -57,5 +57,5 @@ let discountCoupon = {
     'color':'#fff',
 }
 export {
-    orderStatus,couponType,discountCoupon,reduceCoupon,experienceCoupon,discountCoupon
+    orderStatus,couponType,discountCoupon,reduceCoupon,experienceCoupon,rebateCoupon
 }
