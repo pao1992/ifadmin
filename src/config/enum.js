@@ -56,6 +56,10 @@ let rebateCoupon = {
     'num':0,
     'color':'#fff',
 }
+//卡类别
+let cardType = {
+    '1':'次卡',
+}
 export {
-    orderStatus,couponType,discountCoupon,reduceCoupon,experienceCoupon,rebateCoupon
+    orderStatus,couponType,discountCoupon,reduceCoupon,experienceCoupon,rebateCoupon,cardType
 }

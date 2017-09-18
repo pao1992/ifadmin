@@ -9,15 +9,15 @@
 let baseUrl
 let routerMode
 // const imgBaseUrl = 'http://images.api.com/'
-const imgBaseUrl = 'http://static.listudio.cn/'
+const imgBaseUrl = 'http://static.ifadmin.com/'
 
 
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = 'http://admin.listudio.cn/api/v2'
+	baseUrl = 'http://api.ifadmin.com/api/v2'
     // baseUrl = 'http://api.com/api/v2'
 	routerMode = 'hash'
 }else{
-    baseUrl = 'http://admin.listudio.cn/api/v2'
+    baseUrl = 'http://api.listudio.cn/api/v2'
     // baseUrl = 'http://api.com/api/v2'
 	routerMode = 'hash'
 }

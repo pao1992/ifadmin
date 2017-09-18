@@ -90,7 +90,7 @@ export const sidebar = [
     },
     {
         'id': 5,
-        'name': '次/年卡管理',
+        'name': '卡管理',
         'grounp': 'card',
         'code': 'card',
         'sub': [

@@ -110,8 +110,16 @@ export default new Router({
                 },
                 {
                     path: '/timescard',
-                        component: resolve => require(['../page/card/timescard.vue'], resolve)
+                        component: resolve => require(['../page/card/timescard/index.vue'], resolve)
                 },
+                {
+                    path: '/timescard/add',
+                        component: resolve => require(['../page/card/timescard/edit.vue'], resolve)
+                },
+{
+    path: '/timescard/:id(\\d+)',
+        component: resolve => require(['../page/card/timescard/detail.vue'], resolve)
+},
                 {
                     path: '../mixcharts',
                         component: resolve => require(['../components/page/MixCharts.vue'], resolve)    // vue-echarts-v3组件
