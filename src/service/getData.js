@@ -26,9 +26,13 @@ var coupon = (type,query,data) => fetch(type, "/coupon",query,data)
 var userCoupon = (type,query,data) => fetch(type, "/userCoupon",query,data)
 var getAllCoupons = (type,query,data) => fetch(type, "/coupon/all",query,data)
 var user = (type,query,data) => fetch(type, "/user",query,data)
+var userByFilter = (type,query,data) => fetch(type, "/user/by_filter",query,data)
 var card = (type,query,data) => fetch(type, "/card",query,data)
-var cardUsers = (type,query,data) => fetch(type, "/cardUsers/",query,data)
-var cardBinding = (type,query,data) => fetch(type, "/cardBinding",query,data)
+var cardUsers = (type,parma,query,data) => fetch(type, "/card/"+parma.id+"/user",query,data)
+var cardDiffUsers = (type,parma,query,data) => fetch(type, "/card/"+parma.id+"/diff_user",query,data)
+var cardBinding = (type,parma,query,data) => fetch(type, "/card/"+parma.id+'/bind_user/'+parma.user_id,query,data)
+
+//次卡
 
 
 
@@ -42,4 +46,4 @@ var sendLogin = (code, mobile, validate_token) => setpromise(login.userInfo);
 
 export {category,categoryTree,product,order,
     orderByPage,event,banner,system,coupon,userCoupon,
-    getAllCoupons, user,card}
+    getAllCoupons, user, userByFilter,card,cardUsers,cardDiffUsers,cardBinding}

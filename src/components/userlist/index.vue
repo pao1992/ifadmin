@@ -2,13 +2,15 @@
     <div>
         <!-- 筛选栏目 -->
         <el-form :inline="true" ref='form' class="demo-form-inline" :rules="rules">
-            <el-form-item label="用户姓名">
-                <el-input v-model="search.name"></el-input>
-                </el-date-picker>
-            </el-form-item>
-            <el-form-item label="用户手机号" prop="tel">
-                <el-input v-model="search.tel"></el-input>
-            </el-form-item>
+            <!--<el-form-item label="用户姓名">-->
+                <!--<el-input v-model="filter.name"></el-input>-->
+                <!--</el-date-picker>-->
+            <!--</el-form-item>-->
+            <!--<el-form-item label="用户手机号" prop="tel">-->
+                <!--<el-input v-model="filter.tel"></el-input>-->
+            <!--</el-form-item>-->
+            <!-- 将赛选栏目也做成组件形式-->
+            <slot name="filter"></slot>
             <!--<el-form-item label="头部标记">-->
                 <!--<el-input v-model="editEvent.remark"></el-input>-->
             <!--</el-form-item>-->
@@ -21,7 +23,7 @@
             <!--<el-form-item>-->
                 <!--<el-button type="primary" @click="onSubmit">提交</el-button>-->
             <!--</el-form-item>-->
-            <el-button @click="searchUser">查找</el-button>
+            <!--<el-button @click="searchUser">查找</el-button>-->
         </el-form>
 
         <el-table
@@ -32,6 +34,9 @@
                     <el-form label-position="left" inline class="demo-table-expand">
                         <el-form-item label="编号">
                             <span>{{ props.row.id }}</span>
+                        </el-form-item>
+                        <el-form-item label="openid">
+                            <span>{{ props.row.openid }}</span>
                         </el-form-item>
                     </el-form>
                 </template>
@@ -47,13 +52,13 @@
                 label="昵称">
             </el-table-column>
             <el-table-column
-                prop="openid"
-                label="OPENID">
-            </el-table-column>
+                prop="tel"
+                label="联系方式">
             </el-table-column>
             <el-table-column label="操作" width="180">
-                <template scope="scope">
-                    <slot name="operate"></slot>
+                <template scope="props">
+                    <!-- 将操作做成接口暴露给父组件-->
+                    <slot name="operate" :id="props.row.id"></slot>
                 </template>
             </el-table-column>
 
@@ -64,18 +69,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import {user} from 'src/service/getData'
+    import {user,userByFilter} from 'src/service/getData'
     import {couponType} from 'src/config/enum'
 
     export default {
         components: {},
         data(){
             return {
-                users: [],
                 couponType,
                 search: {
                     name:'',
-                    tel:''
+                    tel:'',
+                    del:''
 
                 },
                 rules: {
@@ -104,17 +109,22 @@
                 }
             }
         },
+        props: ['users','filter'],
         mounted(){
             this.initData()
+            console.log(this.filter)
 
         },
         methods: {
             async initData(){
-                this.users = await user('get', {})
+//                this.users = await user('get', {})
 
             },
             async searchUser(){
-                this.users = await user('get',this.search)
+                //根据父组件传过来的筛选条件筛选
+                let res = await userByFilter('post','',this.filter)
+                console.log(res)
+                this.users = res
             }
 //            handleEdit(index, id) {
 //                this.$router.push({path: "/user/" + id})
