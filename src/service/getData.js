@@ -33,8 +33,8 @@ var cardDiffUsers = (type,parma,query,data) => fetch(type, "/card/"+parma.id+"/d
 var cardBinding = (type,parma,query,data) => fetch(type, "/card/"+parma.id+'/bind_user/'+parma.user_id,query,data)
 
 //次卡
-
-
+var getUserCard = (type,parma,query,data) => fetch(type, "/card/"+parma.id+'/usercard',query,data)
+var UserCard = (type,query,data) => fetch(type, "/usercard",query,data)
 
 
 
@@ -46,4 +46,4 @@ var sendLogin = (code, mobile, validate_token) => setpromise(login.userInfo);
 
 export {category,categoryTree,product,order,
     orderByPage,event,banner,system,coupon,userCoupon,
-    getAllCoupons, user, userByFilter,card,cardUsers,cardDiffUsers,cardBinding}
+    getAllCoupons, user, userByFilter,card,cardUsers,cardDiffUsers,cardBinding,getUserCard,UserCard}

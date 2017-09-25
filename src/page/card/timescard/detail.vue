@@ -13,20 +13,8 @@
         </div>
 
         <el-tabs v-model="active" type="card" @tab-click="">
-            <el-tab-pane label="用户列表" name="list">
-                <userList :filter="filter" :users="users">
-                        <div slot="filter">
-                            <el-form-item label="电话号码">
-                                <el-input v-model="filter.tel"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button @click="searchUser()">查找</el-button>
-                            </el-form-item>
-                        </div>
-                    <template slot="operate" scope="props">
-                        <el-button @click="unbind(props.id)">删除绑定</el-button>
-                    </template>
-                </userList>
+            <el-tab-pane label="次卡列表" name="list">
+                <user-card-list></user-card-list>
             </el-tab-pane>
             <el-tab-pane label="绑定用户" name="bind">
                 <userList :filter="filter1" :users="diffUsers">
@@ -50,15 +38,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import {userByFilter, user, cardUsers, cardDiffUsers,cardBinding, cardUnbinding} from 'src/service/getData'
+    import {getUserCard,userByFilter, user, cardUsers, cardDiffUsers,cardBinding, cardUnbinding} from 'src/service/getData'
+    import {default as userCardList} from 'src/page/card/timescard/list'
     import {couponType} from 'src/config/enum'
     import {default as userList} from 'src/components/userlist'
     export default {
         components: {
-            userList
+            userList,
+            userCardList
         },
         data(){
             return {
+                userCard:[],
+                pageSize: 5,
+                currentPage: 1,
+                total: null,
                 card_id:'',
                 active: 'list',
                 users: [],
@@ -68,7 +62,7 @@
                     tel: '',
                 },
                 filter1:{
-                }
+                },
             }
         },
         mounted(){
@@ -79,7 +73,7 @@
         methods: {
             async initData(){
 
-                this.users = await cardUsers('get',{'id':this.card_id},{},{})
+                this.userCard = await getUserCard('get',{'id':this.card_id},{},{})
                 console.log(this.users)
 
             },
