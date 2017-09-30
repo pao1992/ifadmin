@@ -17,7 +17,7 @@
                 <user-card-list></user-card-list>
             </el-tab-pane>
             <el-tab-pane label="绑定用户" name="bind">
-                <userList :filter="filter1" :users="diffUsers">
+                <userList :filter="filter1" :users="">
                     <div slot="filter">
                         <el-form-item label="电话号码">
                             <el-input v-model="filter1.tel"></el-input>
@@ -38,7 +38,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import {getUserCard,userByFilter, user, cardUsers, cardDiffUsers,cardBinding, cardUnbinding} from 'src/service/getData'
+    import {getUserCard,userByFilter, cardUsers,cardBinding, cardUnbinding} from 'src/service/getData'
     import {default as userCardList} from 'src/page/card/timescard/list'
     import {couponType} from 'src/config/enum'
     import {default as userList} from 'src/components/userlist'
@@ -56,7 +56,6 @@
                 card_id:'',
                 active: 'list',
                 users: [],
-                diffUsers:[],
                 couponType,
                 filter: {
                     tel: '',
@@ -74,7 +73,6 @@
             async initData(){
 
                 this.userCard = await getUserCard('get',{'id':this.card_id},{},{})
-                console.log(this.users)
 
             },
             async bind(user_id){
@@ -84,15 +82,9 @@
                 }
                 let res = await cardBinding('post',parma,{},{})
             },
-            async unbind(id){
+            async del(id){
 //                let res = await cardUnbinding('post', {})
             },
-            async searchUser(){
-                this.users = await cardUsers('get', {'id':this.card_id},this.filter)
-            },
-            async unBindUser(){
-                this.diffUsers = await cardDiffUsers('get', {'id':this.card_id},this.filter)
-            }
 //            handleEdit(index, id) {
 //                this.$router.push({path: "/user/" + id})
 //            }
