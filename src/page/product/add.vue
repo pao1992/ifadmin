@@ -18,12 +18,12 @@
                             <el-input v-model="form.product_name_en" name="category_name_en"></el-input>
                         </el-form-item>
                         <el-form-item label="商品类型" prop="product_name_en">
-                            <el-select v-model="form.type" placeholder="商品类型">
+                            <el-select v-model="product_type[form.type]" placeholder="商品类型">
                                 <el-option
-                                    v-for="item in productType"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
+                                    v-for="item,key in product_type"
+                                    :key="key"
+                                    :label="item"
+                                    :value="key">
                                 </el-option>
                             </el-select>
                         </el-form-item>
@@ -112,6 +112,7 @@
     import {default as unrequired_multiple} from './addSpecTpl/unrequired_multiple'
     import {category, product} from 'src/service/getData'
     import {imgBaseUrl, baseUrl} from 'src/config/env'
+    import {product_type} from 'src/config/enum'
     export default {
         components: {
             required_single,
@@ -122,10 +123,7 @@
         },
         data(){
             return {
-                productType: [
-                    {'label': '常规', 'value': 0},
-                    {'label': '活动', 'value': 1},
-                ],
+                product_type: [],
                 getProduct: false,//是否获取到了商品，获取到才开始渲染商品规格
                 imgBaseUrl,
                 baseUrl,
@@ -208,6 +206,8 @@
         methods: {
             ...mapMutations(['UPDATE_PRODUCT']),
             async initData(){
+                //导入商品类型
+                this.product_type = product_type;
                 //判断是新增还是编辑
                 this.type = typeof(this.$route.params.id) == 'undefined' ? 0 : 1 //0是新增，1是编辑
                 //请求商品分类列表

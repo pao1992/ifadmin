@@ -97,8 +97,16 @@ export default new Router({
                     component: resolve => require(['../page/activity/index.vue'], resolve)
                 },
                 {
+                    path: '/date_activity',
+                    component: resolve => require(['../page/activity/date_index.vue'], resolve)
+                },
+                {
                     path: '/activity/add',
-                    component: resolve => require(['../page/activity/add.vue'], resolve)
+                    component: resolve => require(['../page/activity/add_edit.vue'], resolve)
+                },
+                {
+                    path: '/activity/edit/:id(\\d+)',
+                    component: resolve => require(['../page/activity/add_edit.vue'], resolve)
                 },
                 {
                     path: '/coupon',

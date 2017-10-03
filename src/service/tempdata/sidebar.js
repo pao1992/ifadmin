@@ -61,12 +61,18 @@ export const sidebar = [
             },
             {
                 'id': 32,
-                'name': '活动管理',
+                'name': '按照日期显示活动',
                 'grounp': 'schedule',
+                'code': 'date_activity',
+            },
+            {
+                'id': 33,
+                'name': '活动列表',
+                'grounp': 'activity',
                 'code': 'activity',
             },
             {
-                'id': 32,
+                'id': 34,
                 'name': '优惠券管理',
                 'grounp': 'schedule',
                 'code': 'coupon',

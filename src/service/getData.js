@@ -17,6 +17,7 @@ const setpromise = data => {
 var category = (type,query,data) => fetch(type, "/category",query,data)
 var categoryTree = (type,query,data) => fetch(type, "/category/tree",query,data)
 var product = (type,query,data) => fetch(type, "/product",query,data)
+var productByFilter = (type,query,data) => fetch(type, "/product/filter",query,data)
 var order = (type,query,data) => fetch(type, "/order",query,data)
 var orderByPage = (type,query,data) => fetch(type, "/order/paginate",query,data)
 var event = (type,query,data) => fetch(type, "/event",query,data)
@@ -36,7 +37,8 @@ var cardBinding = (type,parma,query,data) => fetch(type, "/card/"+parma.id+'/bin
 var getUserCard = (type,parma,query,data) => fetch(type, "/card/"+parma.id+'/usercard',query,data)
 var UserCard = (type,query,data) => fetch(type, "/usercard",query,data)
 
-
+//活动
+var activity = (type,query,data) => fetch(type, "/activity",query,data)
 
 /**
  * 以下Api接口不需要进行反向代理
@@ -44,6 +46,7 @@ var UserCard = (type,query,data) => fetch(type, "/usercard",query,data)
 
 var sendLogin = (code, mobile, validate_token) => setpromise(login.userInfo);
 
-export {category,categoryTree,product,order,
+export {category,categoryTree,product,productByFilter,order,
     orderByPage,event,banner,system,coupon,userCoupon,
-    getAllCoupons, user, userByFilter,card,cardUsers,cardDiffUsers,cardBinding,getUserCard,UserCard}
+    getAllCoupons, user, userByFilter,card,cardUsers,cardDiffUsers,
+    cardBinding,getUserCard,UserCard,activity}

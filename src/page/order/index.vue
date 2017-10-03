@@ -170,7 +170,7 @@
             },
             handleCurrentChange(val) {
                 this.currentPage = val
-                this.getPage(val)
+                this.getPage()
             },
             searchData() {
                 this.currentPage = 1

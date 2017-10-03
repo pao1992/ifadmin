@@ -9,7 +9,7 @@
 let baseUrl
 let routerMode
 // const imgBaseUrl = 'http://images.api.com/'
-const imgBaseUrl = 'http://static.ifadmin.com/'
+const imgBaseUrl = 'http://static.ifadmin.com'
 
 
 if (process.env.NODE_ENV == 'development') {

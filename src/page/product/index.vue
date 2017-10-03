@@ -26,9 +26,11 @@
                 width="140">
             </el-table-column>
             <el-table-column
-                prop="type"
                 label="类型"
                 width="100">
+                <template scope="props">
+                    {{product_type[props.row.type]}}
+                </template>
             </el-table-column>
             <el-table-column
                 prop="shop_price"
@@ -60,12 +62,14 @@
 
 <script type="text/ecmascript-6">
     import {product} from 'src/service/getData'
+    import {product_type} from 'src/config/enum'
 
     export default {
         components: {},
         data(){
             return {
-                products: []
+                products: [],
+                product_type:[]
             }
         },
         mounted(){
@@ -75,6 +79,7 @@
         methods: {
             async initData(){
                 this.products = await product('get', 'all')
+                this.product_type = product_type
             },
             handleEdit(index, id) {
                 this.$router.push({path: "/product/" + id})

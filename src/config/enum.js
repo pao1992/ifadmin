@@ -1,3 +1,7 @@
+let product_type = {
+    '1':'常规',
+    '2':'活动'
+}
 let orderStatus = {
     '0':'未支付',
     '1':'已支付',
@@ -60,6 +64,13 @@ let rebateCoupon = {
 let cardType = {
     '1':'次卡',
 }
+//活动类型
+let activity_type = {
+    '1':'商品活动',
+    '2':'优惠券活动',
+    '3':'卡券活动'
+}
 export {
-    orderStatus,couponType,discountCoupon,reduceCoupon,experienceCoupon,rebateCoupon,cardType
+    product_type,orderStatus,couponType,discountCoupon,reduceCoupon,
+    experienceCoupon,rebateCoupon,cardType,activity_type
 }

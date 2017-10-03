@@ -63,7 +63,14 @@
             </el-table-column>
 
         </el-table>
-
+        <div class="page">
+            <el-pagination
+                layout="prev, pager, next"
+                :page-size="pageSize"
+                @current-change="handleCurrentChange"
+                :total="total">
+            </el-pagination>
+        </div>
 
     </div>
 </template>
